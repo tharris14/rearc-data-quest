@@ -43,7 +43,11 @@ The other notable design issue was the overlap between `pr.data.0.Current` and `
 
 ## 5. AI usage disclosure
 
-I used **ChatGPT** as a reference and coding assistant for pipeline scaffolding, BLS/API ingestion, Spark SQL and PySpark implementations, diagnostic queries, testing, and documentation structure. I ran and debugged the pipeline in Databricks, inspected its output, supplied validation results, and iterated on issues (including nested JSON names and the decimal tie-breaking fix). A later refactor split the notebook code into reusable Python modules and independent tests; those local tests passed, and the refactored module was later re-run successfully against the live Databricks Volume without creating new file versions or manifest snapshots. I will review and be prepared to explain every submitted line of code and design decision.
+I used ChatGPT as a development assistant throughout this project to accelerate implementation, explore unfamiliar technical patterns, troubleshoot issues, and support testing and documentation.
+
+My existing experience with SQL, ETL pipelines, and data quality informed the Bronze, Silver, and Gold transformation logic, with AI assisting in generating and refining the Spark SQL and PySpark implementations. I relied more heavily on AI when developing the Python ingestion framework, particularly for dynamic file discovery, versioning, and manifest management.
+
+I configured and executed the pipeline in Databricks, investigated and resolved issues through iterative testing, and validated the implementation using data-quality expectations, ingestion resilience tests, and SQL/PySpark result comparisons. I treated AI-generated code as a starting point to be tested and refined rather than assuming it was correct.
 
 ## 6. Remaining submission checklist
 
