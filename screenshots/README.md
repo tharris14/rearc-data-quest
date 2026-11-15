@@ -1,10 +1,10 @@
 # Databricks screenshots
 
-Add screenshots captured from the actual Databricks workspace before submission:
+These four files were captured from the working Databricks workspace as required by Rearc:
 
-- `pipeline-graph.png` — completed Bronze/Silver/Gold pipeline
-- `gold-population-statistics.png` — Question 1 output
-- `gold-best-year.png` — Question 2 output, showing labels and all 337 records
-- `gold-q1-population-join.png` — Question 3 output, including unmatched population years
+- [Pipeline Architecture.png](Pipeline%20Architecture.png) — Bronze, Silver, and Gold dependency graph
+- [Population Statistics.png](Population%20Statistics.png) — question 1 mean and standard deviation
+- [Best Year Per BLS Series.png](Best%20Year%20Per%20BLS%20Series.png) — question 2 best-year calculation and descriptive labels
+- [BLS and Population Join.png](BLS%20and%20Population%20Join.png) — question 3 left join with nullable population
 
-Do not include API credentials, private contact configuration, workspace access tokens, or personal email.
+Screenshots are evidence of a completed Databricks run, not a replacement for the reproducible source files and tests.
