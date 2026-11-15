@@ -2,7 +2,7 @@
 
 A Databricks Spark Declarative Pipeline that ingests Bureau of Labor Statistics (BLS) productivity data and Data USA annual population records, then produces trusted Bronze, Silver, and Gold Delta datasets. The **Gold analytical questions are implemented in Spark SQL**, with **independent PySpark alternatives** and result-comparison tests.
 
-> Status: the Databricks pipeline ran successfully, all three SQL/PySpark comparisons passed (including the follow-up comparison in the Git-backed workspace), and five ingestion resilience scenarios passed in notebook tests. The refactored Python module passes seven offline unit tests. A successful **live ingestion run of the refactored module** has not yet been documented; see [PROCESS.md](PROCESS.md) for remaining verification.
+> Status: the Databricks pipeline ran successfully, all three SQL/PySpark comparisons passed (including the follow-up comparison in the Git-backed workspace), and five ingestion resilience scenarios passed in notebook tests. The refactored Python module passes seven offline unit tests and a live Databricks Volume rerun confirmed **13/13 unchanged files, zero new manifest snapshots**. See [PROCESS.md](PROCESS.md) for remaining verification.
 
 ## Architecture
 
@@ -111,7 +111,7 @@ The user's original Databricks run reported:
 | Data USA population rows | 11 |
 | Gold SQL/PySpark cross-implementation comparisons | 3 passed |
 
-These counts are a **snapshot** and may change as BLS updates the source. Population 2020 was absent from the observed API response; the Q1 join preserves a null rather than imputing it.
+These counts are a **snapshot** and may change as BLS updates the source. The refactored ingestion module was later run directly in Databricks against the existing Volume and found 13 unchanged files with no new snapshot. An inspection of the 138,487 parseable BLS values in Bronze showed a maximum of three decimal places, so the six-decimal Gold aggregation scale is sufficient for this snapshot. Population 2020 was absent from the observed API response; the Q1 join preserves a null rather than imputing it.
 
 ## Databricks evidence
 
