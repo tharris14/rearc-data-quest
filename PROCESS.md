@@ -43,7 +43,7 @@ The other notable design issue was the overlap between `pr.data.0.Current` and `
 
 ## 5. AI usage disclosure
 
-I used **ChatGPT** as a reference and coding assistant for pipeline scaffolding, BLS/API ingestion, Spark SQL and PySpark implementations, diagnostic queries, testing, and documentation structure. I ran and debugged the pipeline in Databricks, inspected its output, supplied validation results, and iterated on issues (including nested JSON names and the decimal tie-breaking fix). A later refactor split the notebook code into reusable Python modules and independent tests; those local tests passed, but I have not yet revalidated that refactor in the live workspace. I will review and be prepared to explain every submitted line of code and design decision.
+I used **ChatGPT** as a reference and coding assistant for pipeline scaffolding, BLS/API ingestion, Spark SQL and PySpark implementations, diagnostic queries, testing, and documentation structure. I ran and debugged the pipeline in Databricks, inspected its output, supplied validation results, and iterated on issues (including nested JSON names and the decimal tie-breaking fix). A later refactor split the notebook code into reusable Python modules and independent tests; those local tests passed, but a successful live run of that refactored ingestion module is not yet documented. I will review and be prepared to explain every submitted line of code and design decision.
 
 ## 6. Remaining submission checklist
 
@@ -51,5 +51,5 @@ I used **ChatGPT** as a reference and coding assistant for pipeline scaffolding,
 - [ ] Confirm SQL expectations' pipeline quality metrics, including any dropped-row counts.
 - [ ] Check raw BLS numeric precision fits the decimal casting assumption or revise Silver to parse decimal directly.
 - [ ] Optionally run a controlled end-to-end manifest change against a **separate test Volume/pipeline**, not the working production data.
-- [ ] Capture actual Databricks pipeline + Gold screenshots in `screenshots/`.
+- [x] Capture actual Databricks pipeline + Gold screenshots in `screenshots/`.
 - [ ] Verify final GitHub files and share the repository URL with Rearc.
