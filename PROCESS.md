@@ -45,15 +45,7 @@ The other notable design issue was the overlap between `pr.data.0.Current` and `
 
 I used ChatGPT as a development assistant throughout this project to accelerate implementation, explore unfamiliar technical patterns, troubleshoot issues, and support testing and documentation.
 
-My existing experience with SQL, ETL pipelines, and data quality informed the Bronze, Silver, and Gold transformation logic, with AI assisting in generating and refining the Spark SQL and PySpark implementations. I relied more heavily on AI when developing the Python ingestion framework, particularly for dynamic file discovery, versioning, and manifest management.
+My existing experience with SQL, ETL pipelines, and data quality informed the Bronze, Silver, and Gold transformation logic, with AI assisting in refining the Spark SQL and PySpark implementations. I relied more heavily on AI when developing the Python ingestion framework, particularly for dynamic file discovery, versioning, and manifest management.
 
-I configured and executed the pipeline in Databricks, investigated and resolved issues through iterative testing, and validated the implementation using data-quality expectations, ingestion resilience tests, and SQL/PySpark result comparisons. I treated AI-generated code as a starting point to be tested and refined rather than assuming it was correct.
+I configured and executed the pipeline in Databricks, investigated and resolved issues through iterative testing, and validated the implementation using data-quality expectations, ingestion resilience tests, and SQL/PySpark result comparisons. I treated AI-generated code for the Python Ingestion framework as a starting point to be tested and refined rather than assuming it was correct.
 
-## 6. Remaining submission checklist
-
-- [x] Import the refactored Python ingestion module into Databricks and run it against the existing Volume; 13 unchanged files and zero new snapshots.
-- [x] Confirm Silver expectations in Databricks event log: 8/8 expectations with zero failed and zero dropped records in the current snapshot.
-- [x] Check raw BLS numeric precision: at most three decimal places across 138,487 parseable Bronze observations; DECIMAL(20,6) has sufficient scale for the observed data.
-- [ ] Optionally run a controlled end-to-end manifest change against a **separate test Volume/pipeline**, not the working production data.
-- [x] Capture actual Databricks pipeline + Gold screenshots in `screenshots/`.
-- [ ] Verify final GitHub files and share the repository URL with Rearc.
