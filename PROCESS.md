@@ -20,7 +20,7 @@ The active-file manifest is essential: Auto Loader may preserve older file versi
 
 **Q1 BLS and population:** Filter to `PRS30006032` and `Q01`; `LEFT JOIN` on `year` so earlier or unmatched BLS observations still appear with `NULL` population. The series title was verified as “Hours worked for the Manufacturing sector, % Change from previous quarter.”
 
-**Validation:** Observed initial Silver counts were 138,487 validated BLS rows and 92,328 deduplicated observations; 46,159 duplicate rows had identical values with zero conflicts. All three SQL vs. PySpark result comparisons passed after the decimal change. The isolated source-ingestion tests passed for first run, unchanged, modified, added and removed files; subsequently, seven offline unit tests on the refactored module also passed.
+**Validation:** Observed initial Silver counts were 138,487 validated BLS rows and 92,328 deduplicated observations; 46,159 duplicate rows had identical values with zero conflicts. The latest recorded pipeline event log (2026-11-15 21:31 UTC) reported all eight Silver expectations passing with zero failed records and zero dropped records: four checks over 138,487 BLS observation rows, two checks over 337 series rows, and two checks over 11 population rows. All three SQL vs. PySpark result comparisons passed after the decimal change. The isolated source-ingestion tests passed for first run, unchanged, modified, added and removed files; subsequently, seven offline unit tests on the refactored module also passed.
 
 ## 3. Technical trade-offs and improvements for a client
 
@@ -48,7 +48,7 @@ I used **ChatGPT** as a reference and coding assistant for pipeline scaffolding,
 ## 6. Remaining submission checklist
 
 - [x] Import the refactored Python ingestion module into Databricks and run it against the existing Volume; 13 unchanged files and zero new snapshots.
-- [ ] Confirm SQL expectations' pipeline quality metrics, including any dropped-row counts.
+- [x] Confirm Silver expectations in Databricks event log: 8/8 expectations with zero failed and zero dropped records in the current snapshot.
 - [x] Check raw BLS numeric precision: at most three decimal places across 138,487 parseable Bronze observations; DECIMAL(20,6) has sufficient scale for the observed data.
 - [ ] Optionally run a controlled end-to-end manifest change against a **separate test Volume/pipeline**, not the working production data.
 - [x] Capture actual Databricks pipeline + Gold screenshots in `screenshots/`.
