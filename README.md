@@ -113,6 +113,18 @@ The user's original Databricks run reported:
 
 These counts are a **snapshot** and may change as BLS updates the source. The refactored ingestion module was later run directly in Databricks against the existing Volume and found 13 unchanged files with no new snapshot. An inspection of the 138,487 parseable BLS values in Bronze showed a maximum of three decimal places, so the six-decimal Gold aggregation scale is sufficient for this snapshot. Population 2020 was absent from the observed API response; the Q1 join preserves a null rather than imputing it.
 
+## Databricks expectation validation
+
+The latest recorded Spark Declarative Pipeline event log (2026-11-15 21:31 UTC) showed **zero failed and zero dropped rows** for all eight Silver-layer expectations:
+
+| Dataset | Input records | Expectations | Failed records | Dropped records |
+|---|---:|---:|---:|---:|
+| `silver_bls_validated` | 138,487 | 4 | 0 | 0 |
+| `silver_bls_series` | 337 | 2 | 0 | 0 |
+| `silver_population` | 11 | 2 | 0 | 0 |
+
+These results demonstrate the current source snapshot passes the defined constraints; a controlled malformed-record replay through the live SDP was not performed.
+
 ## Databricks evidence
 
 Four screenshots from the working Databricks workspace are included:
