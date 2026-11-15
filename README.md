@@ -1,6 +1,6 @@
 # Rearc Data Quest — Databricks Edition
 
-A Databricks Spark Declarative Pipeline that ingests Bureau of Labor Statistics (BLS) productivity data and Data USA annual population records, then produces trusted Bronze, Silver, and Gold Delta datasets. The **Gold analytical questions are implemented in Spark SQL**, with **independent PySpark alternatives** and result-comparison tests.
+A Databricks Spark Declarative Pipeline that ingests Bureau of Labor Statistics (BLS) productivity data and USA annual population records, then produces trusted Bronze, Silver, and Gold Delta datasets. The **Gold analytical questions are implemented in Spark SQL**, with **independent PySpark alternatives** and result-comparison tests.
 
 > Status: the Databricks pipeline ran successfully, all three SQL/PySpark comparisons passed (including the follow-up comparison in the Git-backed workspace), and five ingestion resilience scenarios passed in notebook tests. The refactored Python module passes seven offline unit tests and a live Databricks Volume rerun confirmed **13/13 unchanged files, zero new manifest snapshots**. See [PROCESS.md](PROCESS.md) for remaining verification.
 
