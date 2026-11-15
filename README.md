@@ -2,7 +2,7 @@
 
 A Databricks Spark Declarative Pipeline that ingests Bureau of Labor Statistics (BLS) productivity data and Data USA annual population records, then produces trusted Bronze, Silver, and Gold Delta datasets. The **Gold analytical questions are implemented in Spark SQL**, with **independent PySpark alternatives** and result-comparison tests.
 
-> Status: the original pipeline ran successfully in Databricks; all three SQL/PySpark comparisons passed, and five ingestion resilience scenarios passed in notebook tests. The refactored Python module also passes seven offline unit tests, but has **not yet been re-run against the live Databricks workspace**. See [PROCESS.md](PROCESS.md) for limitations and remaining verification.
+> Status: the Databricks pipeline ran successfully, all three SQL/PySpark comparisons passed (including the follow-up comparison in the Git-backed workspace), and five ingestion resilience scenarios passed in notebook tests. The refactored Python module passes seven offline unit tests. A successful **live ingestion run of the refactored module** has not yet been documented; see [PROCESS.md](PROCESS.md) for remaining verification.
 
 ## Architecture
 
@@ -113,9 +113,16 @@ The user's original Databricks run reported:
 
 These counts are a **snapshot** and may change as BLS updates the source. Population 2020 was absent from the observed API response; the Q1 join preserves a null rather than imputing it.
 
-## Evidence/screenshots before submission
+## Databricks evidence
 
-Add actual Databricks screenshots into `screenshots/` for the pipeline graph and the three Gold result views. Capture the current workspace rather than generating mock screenshots. See [`screenshots/README.md`](screenshots/README.md).
+Four screenshots from the working Databricks workspace are included:
+
+- [Pipeline architecture](screenshots/Pipeline%20Architecture.png) — completed Bronze/Silver/Gold dependency graph
+- [Population statistics](screenshots/Population%20Statistics.png) — Gold result for question 1
+- [Best year per BLS series](screenshots/Best%20Year%20Per%20BLS%20Series.png) — Gold result for question 2
+- [BLS Q1 / population join](screenshots/BLS%20and%20Population%20Join.png) — Gold result for question 3
+
+See [`screenshots/README.md`](screenshots/README.md) for screenshot descriptions.
 
 ## Data sources
 
